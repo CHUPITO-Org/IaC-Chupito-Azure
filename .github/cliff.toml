@@ -64,6 +64,7 @@ commit_parsers = [
     { message = "^feat", group = "Features 🚀" },
     { message = "^feature", group = "Features 🚀" },
     { message = "^BREAKING", group = "BREAKING CHANGES 🚨"},
+    { message = "^hotfix", group = "Hot Fixes 🔥" },
     { message = "^fix", group = "Bug Fixes ⚙️" },
     { message = "^bugfix", group = "Bug Fixes ⚙️" },
     { message = "^doc", group = "Documentation 📚", skip = true },
