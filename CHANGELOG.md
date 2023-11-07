@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## Version 0.2.0 - (2023-11-07)
+
+### Features 🚀
+
+- Change region location - ([7402716](https://github.com/CHUPITO-Org/IaC-Chupito/commit/74027164c7761430f9d29603759b19ca66ac0ce0))
+
 ## Version 0.1.0 - (2023-11-07)
 
 ### Features 🚀
