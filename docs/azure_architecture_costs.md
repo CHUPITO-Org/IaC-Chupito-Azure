@@ -20,6 +20,6 @@ Costo por mes durante 24 horas:
 * Load Balancer: 0 USD
 * Azure Container Registry: 5 USD - Basic Tier
 
-**Total cost: 272,83 USD**
+**Total cost: 65.17 USD**
 
 **Azure Calculator:** https://azure.com/e/b40d08f1816648fe93622ea4af4d6c74
