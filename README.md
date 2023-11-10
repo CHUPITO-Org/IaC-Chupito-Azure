@@ -29,9 +29,9 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azurerm_container_registry.containerregistry_chupito](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.1/docs/resources/container_registry) | resource |
+| [azurerm_container_registry.az-capabilities-acr](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.1/docs/resources/container_registry) | resource |
 | [azurerm_resource_group.az-capabilities-rg](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.1/docs/resources/resource_group) | resource |
-| [azurerm_virtual_network.chupito-vnet-1](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.1/docs/resources/virtual_network) | resource |
+| [azurerm_virtual_network.az-capabilities-vnet-1](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.1/docs/resources/virtual_network) | resource |
 
 ## Inputs
 
