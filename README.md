@@ -29,11 +29,18 @@ No modules.
 
 | Name | Type |
 |------|------|
-| [azurerm_resource_group.default_rg](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.1/docs/resources/resource_group) | resource |
+| [azurerm_container_registry.containerregistry_chupito](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.1/docs/resources/container_registry) | resource |
+| [azurerm_resource_group.az-capabilities-rg](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.1/docs/resources/resource_group) | resource |
+| [azurerm_virtual_network.chupito-vnet-1](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.1/docs/resources/virtual_network) | resource |
 
 ## Inputs
 
-No inputs.
+| Name | Description | Type | Default | Required |
+|------|-------------|------|---------|:--------:|
+| <a name="input_client_id"></a> [client\_id](#input\_client\_id) | n/a | `string` | n/a | yes |
+| <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | n/a | `string` | n/a | yes |
+| <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | n/a | `string` | n/a | yes |
+| <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | n/a | `string` | n/a | yes |
 
 ## Outputs
 
