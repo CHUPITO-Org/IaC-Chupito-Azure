@@ -19,3 +19,4 @@ resource "azurerm_container_registry" "az-capabilities-acr" {
   location            = "eastus2"
   admin_enabled       = true
   sku                 = "Standard"
+}
