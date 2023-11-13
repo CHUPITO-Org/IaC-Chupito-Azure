@@ -1,4 +1,4 @@
-# vnet_module/variables.tf
+# vnet/variables.tf
 
 variable "vnet_name" {
   description = "Name of the virtual network"
