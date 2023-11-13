@@ -44,7 +44,7 @@ After that the pre-commit will check
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_az-capabilities-vnet-1"></a> [az-capabilities-vnet-1](#module\_az-capabilities-vnet-1) | ./modules/vnet | n/a |
+| <a name="module_network"></a> [network](#module\_network) | ./modules/vnet | n/a |
 
 ## Resources
 
@@ -56,10 +56,14 @@ After that the pre-commit will check
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
-| <a name="input_client_id"></a> [client\_id](#input\_client\_id) | n/a | `string` | n/a | yes |
+| <a name="input_address_space"></a> [address\_space](#input\_address\_space) | Address space of the virtual network | `list(string)` | n/a | yes |
+| <a name="input_client_id"></a> [client\_id](#input\_client\_id) | Terraform Cloud connection | `string` | n/a | yes |
 | <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | n/a | `string` | n/a | yes |
+| <a name="input_location"></a> [location](#input\_location) | Location | `string` | n/a | yes |
+| <a name="input_rg_name"></a> [rg\_name](#input\_rg\_name) | Name of the resource group | `string` | n/a | yes |
 | <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | n/a | `string` | n/a | yes |
 | <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | n/a | `string` | n/a | yes |
+| <a name="input_vnet_name"></a> [vnet\_name](#input\_vnet\_name) | Name of the virtual network | `string` | n/a | yes |
 
 ## Outputs
 
