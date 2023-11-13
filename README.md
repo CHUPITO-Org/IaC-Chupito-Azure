@@ -44,7 +44,7 @@ After that the pre-commit will check
 
 | Name | Source | Version |
 |------|--------|---------|
-| <a name="module_network"></a> [network](#module\_network) | ./modules/vnet | n/a |
+| <a name="module_network"></a> [network](#module\_network) | ./modules/network | n/a |
 
 ## Resources
 

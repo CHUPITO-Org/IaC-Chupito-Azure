@@ -6,7 +6,7 @@ resource "azurerm_resource_group" "az-capabilities-rg" {
 
 # virtual network
 module "network" {
-  source              = "./modules/vnet"
+  source              = "./modules/network"
   vnet_name           = var.vnet_name
   address_space       = var.address_space
   location            = azurerm_resource_group.az-capabilities-rg.location
