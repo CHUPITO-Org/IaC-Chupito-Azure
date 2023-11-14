@@ -13,11 +13,10 @@ module "network" {
   resource_group_name = azurerm_resource_group.az-capabilities-rg.name
 }
 
+# azure container registry
 module "acr" {
   source              = "./modules/container-registry"
   acr_name            = var.acr_name
   location            = azurerm_resource_group.az-capabilities-rg.location
   resource_group_name = azurerm_resource_group.az-capabilities-rg.name
-  crl_name            = var.crl_name
-  lock_level          = var.lock_level
 }

@@ -61,9 +61,7 @@ After that the pre-commit will check
 | <a name="input_address_space"></a> [address\_space](#input\_address\_space) | Address space of the virtual network | `list(string)` | <pre>[<br>  "10.0.0.0/16"<br>]</pre> | no |
 | <a name="input_client_id"></a> [client\_id](#input\_client\_id) | Terraform Cloud connection | `string` | n/a | yes |
 | <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | n/a | `string` | n/a | yes |
-| <a name="input_crl_name"></a> [crl\_name](#input\_crl\_name) | Name of the container registry lock | `string` | n/a | yes |
 | <a name="input_location"></a> [location](#input\_location) | Location | `string` | n/a | yes |
-| <a name="input_lock_level"></a> [lock\_level](#input\_lock\_level) | Level of the container lock | `string` | n/a | yes |
 | <a name="input_rg_name"></a> [rg\_name](#input\_rg\_name) | Name of the resource group | `string` | n/a | yes |
 | <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | n/a | `string` | n/a | yes |
 | <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | n/a | `string` | n/a | yes |

@@ -43,15 +43,3 @@ variable "acr_name" {
   description = "Name of the container registry"
   type        = string
 }
-
-# Container Registry Lock
-
-variable "crl_name" {
-  description = "Name of the container registry lock"
-  type        = string
-}
-
-variable "lock_level" {
-  description = "Level of the container lock"
-  type        = string
-}

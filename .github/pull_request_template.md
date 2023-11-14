@@ -1,13 +1,13 @@
-## Conference App - Cloud
+## Conference App - Azure Cloud
 
 ## Issue ticket number and link
 
 
 ## Checklist before requesting a review
 - [ ] I have performed a self-review of my code
-- [ ] If it is a core feature, I have added thorough tests.
-- [ ] Do we need to implement analytics?
-- [ ] Will this be part of a product update? If yes, please write one phrase about this update.
+- [ ] I have added tests to cover my changes
+- [ ] All new and existing tests passed
+- [ ] My changes generate no new warnings or errors
 
 ## Pull request type
 
@@ -17,19 +17,15 @@
 
 Please check the type of change your PR introduces:
 
-- [ ] :sparkles: Feature
+- [ ] :sparkles: Feature Implementation
 - [ ] :bug: Bugfix
-- [ ] :pencil2: Fixing typos
-- [ ] :lipstick: :art: Code style update (formatting, renaming)
-- [ ] :recycle: Refactoring (no functional changes, no api changes)
-- [ ] :zap: Performance
+- [ ] :art: Code Formatting (formatting, renaming)
+- [ ] :recycle: Refactoring
 - [ ] :pencil: Documentation content changes
 - [ ] :white_check_mark: Unit testing
-- [ ] :ok_hand: Updating due to code review suggest
-- [ ] :rocket: Release: v
+- [ ] :hammer: Automated testing
+- [ ] :zap:  Dependency update
 - [ ] :wrench: Add or update configuration files
-- [ ] :hammer: Add or update development scripts
-- [ ] :bricks: Infrastructure related changes
 
 ## What is the current module?
 
