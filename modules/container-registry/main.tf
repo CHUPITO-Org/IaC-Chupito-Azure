@@ -8,10 +8,10 @@ resource "azurerm_container_registry" "acr" {
   sku                 = "Standard"
 }
 
-# container registry lock
+# container registry lock (permisos insuficientes)
 
-resource "azurerm_management_lock" "crl" {
-  name       = var.crl_name
-  scope      = azurerm_container_registry.acr.id
-  lock_level = "CanNotDelete"
-}
+# resource "azurerm_management_lock" "crl" {
+#   name       = var.crl_name
+#   scope      = azurerm_container_registry.acr.id
+#   lock_level = "CanNotDelete"
+# }
