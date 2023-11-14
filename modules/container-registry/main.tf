@@ -5,7 +5,7 @@ resource "azurerm_container_registry" "acr" {
   resource_group_name = var.resource_group_name
   location            = var.location
   admin_enabled       = true
-  sku                 = "Standard"
+  sku                 = "Basic"
 }
 
 # container registry lock (permisos insuficientes)
