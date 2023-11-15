@@ -43,3 +43,58 @@ variable "acr_name" {
   description = "Name of the container registry"
   type        = string
 }
+variable "admin_enabled" {
+  description = "Admin enabled"
+  type        = bool
+}
+
+variable "sku" {
+  description = "Level o sku"
+  type        = string
+}
+
+# azure container instance
+
+variable "acg_name" {
+  description = "Name of the container group"
+  type        = string
+}
+
+variable "ip_address_type" {
+  description = "Type of ip address: private or public"
+  type        = string
+}
+
+variable "os_type" {
+  description = "Type of os_type"
+  type        = string
+  default     = "Linux"
+}
+
+variable "aci_name" {
+  description = "Name of the container instance"
+  type        = string
+}
+
+variable "cpu" {
+  description = "value of cpu"
+  type        = number
+  default     = 1
+}
+
+variable "memory" {
+  description = "value of memory"
+  type        = number
+  default     = 1
+}
+
+variable "port" {
+  description = "value of port"
+  type        = number
+}
+
+variable "protocol" {
+  description = "value of protocol"
+  type        = string
+  default     = "TCP"
+}
