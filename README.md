@@ -44,6 +44,7 @@ After that the pre-commit will check
 
 | Name | Source | Version |
 |------|--------|---------|
+| <a name="module_acr"></a> [acr](#module\_acr) | ./modules/container-registry | n/a |
 | <a name="module_network"></a> [network](#module\_network) | ./modules/network | n/a |
 
 ## Resources
@@ -56,6 +57,7 @@ After that the pre-commit will check
 
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
+| <a name="input_acr_name"></a> [acr\_name](#input\_acr\_name) | Name of the container registry | `string` | n/a | yes |
 | <a name="input_address_space"></a> [address\_space](#input\_address\_space) | Address space of the virtual network | `list(string)` | <pre>[<br>  "10.0.0.0/16"<br>]</pre> | no |
 | <a name="input_client_id"></a> [client\_id](#input\_client\_id) | Terraform Cloud connection | `string` | n/a | yes |
 | <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | n/a | `string` | n/a | yes |
