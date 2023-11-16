@@ -19,17 +19,20 @@ variable "tenant_id" {
 variable "rg_name" {
   description = "Name of the resource group"
   type        = string
+  default     = "az-capabilities-rg"
 }
 
 variable "location" {
   description = "Location"
   type        = string
+  default     = "Eastus2"
 }
 
 # Virtual Network
 variable "vnet_name" {
   description = "Name of the virtual network"
   type        = string
+  default     = "az-capabilities-vnet-1"
 }
 
 variable "address_space" {
@@ -39,6 +42,7 @@ variable "address_space" {
 }
 
 # Azure Container Registry
+
 variable "acr_name" {
   description = "Name of the container registry"
   type        = string
@@ -98,3 +102,4 @@ variable "protocol" {
   type        = string
   default     = "TCP"
 }
+

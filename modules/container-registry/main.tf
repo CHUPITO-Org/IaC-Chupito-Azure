@@ -7,6 +7,7 @@ resource "azurerm_container_registry" "acr" {
   admin_enabled       = var.admin_enabled
   sku                 = var.sku
 }
+
 output "acr_login_server" {
   value = azurerm_container_registry.acr.login_server
 }

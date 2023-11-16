@@ -24,6 +24,4 @@ resource "azurerm_container_group" "acg" {
       protocol = var.protocol
     }
   }
-
-
 }
