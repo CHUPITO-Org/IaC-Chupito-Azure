@@ -46,15 +46,18 @@ variable "address_space" {
 variable "acr_name" {
   description = "Name of the container registry"
   type        = string
+  default     = "azcapabilitiesacr"
 }
 variable "admin_enabled" {
   description = "Admin enabled"
   type        = bool
+  default     = true
 }
 
 variable "sku" {
   description = "Level o sku"
   type        = string
+  default     = "Standard"
 }
 
 # azure container instance
@@ -62,11 +65,13 @@ variable "sku" {
 variable "acg_name" {
   description = "Name of the container group"
   type        = string
+  default     = "az-capabilties-acg"
 }
 
 variable "ip_address_type" {
   description = "Type of ip address: private or public"
   type        = string
+  default     = "Public"
 }
 
 variable "os_type" {
@@ -95,6 +100,7 @@ variable "memory" {
 variable "port" {
   description = "value of port"
   type        = number
+  default     = 80
 }
 
 variable "protocol" {
