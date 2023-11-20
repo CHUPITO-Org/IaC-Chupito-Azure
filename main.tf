@@ -19,4 +19,22 @@ module "acr" {
   acr_name            = var.acr_name
   location            = azurerm_resource_group.az-capabilities-rg.location
   resource_group_name = azurerm_resource_group.az-capabilities-rg.name
+  admin_enabled       = var.admin_enabled
+  sku                 = var.sku
+}
+
+module "acg" {
+  source              = "./modules/container-instance"
+  acg_name            = var.acg_name
+  location            = azurerm_resource_group.az-capabilities-rg.location
+  resource_group_name = azurerm_resource_group.az-capabilities-rg.name
+  acr_login_server    = module.acr.acr_login_server
+  acr_admin_username  = module.acr.acr_admin_username
+  acr_admin_password  = module.acr.acr_admin_password
+  aci_name            = var.aci_name
+  image               = "${module.acr.acr_login_server}/fe-chupito:prueba"
+  cpu                 = var.cpu
+  memory              = var.memory
+  port                = var.port
+  protocol            = var.protocol
 }

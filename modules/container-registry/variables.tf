@@ -14,3 +14,13 @@ variable "resource_group_name" {
   description = "Name of the resource group"
   type        = string
 }
+
+variable "admin_enabled" {
+  description = "Admin enabled"
+  type        = bool
+}
+
+variable "sku" {
+  description = "Level o sku"
+  type        = string
+}
