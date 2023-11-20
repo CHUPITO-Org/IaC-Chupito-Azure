@@ -3,7 +3,7 @@
 #TODO: Define variables
 resource "azurerm_container_group" "acg" {
   name                = var.acg_name
-  location            = "Eastus2"
+  location            = var.location
   resource_group_name = var.resource_group_name
   ip_address_type     = "Public"
   os_type             = "Linux"

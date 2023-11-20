@@ -15,16 +15,6 @@ variable "resource_group_name" {
   type        = string
 }
 
-variable "ip_address_type" {
-  description = "Type of ip address: private or public"
-  type        = string
-}
-
-variable "os_type" {
-  description = "Type of os_type"
-  type        = string
-}
-
 variable "acr_login_server" {
   description = "Value of the login server"
   type        = string

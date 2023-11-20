@@ -28,8 +28,6 @@ module "acg" {
   acg_name            = var.acg_name
   location            = azurerm_resource_group.az-capabilities-rg.location
   resource_group_name = azurerm_resource_group.az-capabilities-rg.name
-  ip_address_type     = var.ip_address_type
-  os_type             = var.os_type
   acr_login_server    = module.acr.acr_login_server
   acr_admin_username  = module.acr.acr_admin_username
   acr_admin_password  = module.acr.acr_admin_password
