@@ -30,6 +30,6 @@ Costo por mes durante 24 horas:
 * Azure Container Registry: 5 USD - Standard Tier
 * Ip address: 3.65 USD - Standard Tier
 
-**Total cost: 65.17 USD**
+**Total cost: 92.07 USD**
 
-**Azure Calculator:** https://azure.com/e/b40d08f1816648fe93622ea4af4d6c74
+**Azure Calculator:** https://azure.com/e/7b14a5efafce48c6bfa974d7e62f9f59
