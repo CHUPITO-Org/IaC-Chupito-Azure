@@ -12,24 +12,28 @@
 
 ## Resources
 
-* Virtual Network
-* Container Instances
-* CosmosDB for MongoDB
-* Load Balancer
-* Container Registry
-* Public Ip
+* Subscription
+  * App registration
+  * Azure Active Directory
+  * Resource Group
+    * Virtual Network
+    * Container Registry
+    * Container group: 3 Container Instances
+    * Load Balancer
+    * Public Ip
+    * Storage Account
 
 ## Infrastructure Cost
 
 Costo por mes durante 24 horas:
 
-* Virtual Network: 4 USD
-* Container Instance: 32.81 USD  - 1 Container group: 2 instances
-* CosmosDB for MongoDB: 23.36 USD - Standard provisioned throughput
+* Virtual Network: 7 USD
+* Container Registry: 5 USD
+* Container group: 32.81 USD
 * Load Balancer: 23.25 USD
-* Azure Container Registry: 5 USD - Standard Tier
-* Ip address: 3.65 USD - Standard Tier
+* Public Ip: 3.65 USD
+* Storage Account: 5.81 USD
 
-**Total cost: 92.07 USD**
+**Total cost: 77.52 USD**
 
-**Azure Calculator:** https://azure.com/e/7b14a5efafce48c6bfa974d7e62f9f59
+**Azure Calculator:** https://azure.com/e/c7787cbc39e44ecaaed1c37f1f43c34a
