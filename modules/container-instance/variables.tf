@@ -35,11 +35,6 @@ variable "aci_name" {
   type        = string
 }
 
-variable "image" {
-  description = "Source of image"
-  type        = string
-}
-
 variable "cpu" {
   description = "value of cpu"
   type        = number
@@ -59,3 +54,33 @@ variable "protocol" {
   description = "value of protocol"
   type        = string
 }
+
+# Mongo DB variables
+
+variable "image_front" {
+  description = "image of the front"
+}
+
+# TODO: Agregar contenedores de mongo y bff
+# variable "image_back" {
+#   description = "image of the backend"
+#   default     = "azcapabilitiesacr.azurecr.io/ms-conference-bff:latest"
+# }
+
+# variable "db_root_username" {
+#   description = "value of the root username"
+#   type        = string
+#   default     = "username"
+# }
+
+# variable "db_root_password" {
+#   description = "value of the root password"
+#   type        = string
+#   default     = "password"
+# }
+
+# variable "default_db" {
+#   description = "value of the default db"
+#   type        = string
+#   default     = "mongodb"
+# }

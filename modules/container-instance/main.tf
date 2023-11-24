@@ -16,7 +16,7 @@ resource "azurerm_container_group" "acg" {
 
   container {
     name   = var.aci_name
-    image  = var.image
+    image  = var.image_front
     cpu    = var.cpu
     memory = var.memory
 
@@ -25,4 +25,39 @@ resource "azurerm_container_group" "acg" {
       protocol = var.protocol
     }
   }
+  # TODO: Agregar contenedores de mongo y bff
+  # container {
+  #   name   = "mongodb"
+  #   image  = "mongo:6.0.6"
+  #   cpu    = "1"
+  #   memory = "1"
+
+  #   ports {
+  #     port     = 27017
+  #     protocol = "TCP"
+  #   }
+
+  #   environment_variables = {
+  #     MONGO_INITDB_ROOT_USERNAME = var.db_root_username
+  #     MONGO_INITDB_ROOT_PASSWORD = var.db_root_password
+  #     MONGO_INITDB_DATABASE      = var.default_db
+  #   }
+  # }
+
+  # container {
+  #   name   = "conference-bff"
+  #   image  = "azcapabilitiesacr2.azurecr.io/ms-conference-bff:latest"
+  #   cpu    = "1"
+  #   memory = "1"
+
+  #   ports {
+  #     port     = 5002
+  #     protocol = "TCP"
+  #   }
+
+  #   environment_variables = {
+  #     MONGODB_URI = "mongodb://${var.db_root_username}:${var.db_root_password}@mongodb:27017/${var.default_db}"
+  #     DEFAULT_DB  = var.default_db
+  #   }
+  # }
 }

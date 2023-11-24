@@ -23,6 +23,13 @@ module "acr" {
   sku                 = var.sku
 }
 
+# storage
+module "storage" {
+  source              = "./modules/storage"
+  resource_group_name = azurerm_resource_group.az-capabilities-rg.name
+  location            = azurerm_resource_group.az-capabilities-rg.location
+}
+
 module "acg" {
   source              = "./modules/container-instance"
   acg_name            = var.acg_name
@@ -32,9 +39,11 @@ module "acg" {
   acr_admin_username  = module.acr.acr_admin_username
   acr_admin_password  = module.acr.acr_admin_password
   aci_name            = var.aci_name
-  image               = "${module.acr.acr_login_server}/fe-chupito:prueba"
+  image_front         = "${module.acr.acr_login_server}/fe-chupito:prueba"
   cpu                 = var.cpu
   memory              = var.memory
   port                = var.port
   protocol            = var.protocol
+  # TODO: Agregar contenedores de mongo y bff
+  #image_back          = "${module.acr.acr_login_server}/be-chupito:prueba"
 }
