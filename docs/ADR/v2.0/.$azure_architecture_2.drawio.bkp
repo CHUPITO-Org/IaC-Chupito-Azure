@@ -1,6 +1,6 @@
-<mxfile host="Electron" modified="2023-11-27T19:02:26.188Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.2 Chrome/114.0.5735.289 Electron/25.9.4 Safari/537.36" etag="zE3awhSyTsc6ydCAxOEy" version="22.1.2" type="device">
+<mxfile host="Electron" modified="2023-11-24T17:13:32.736Z" agent="Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/22.1.2 Chrome/114.0.5735.289 Electron/25.9.4 Safari/537.36" etag="dpzOizHduYDy4SDrobfV" version="22.1.2" type="device">
   <diagram name="Page-1" id="NbZYLsITIQdBhNB3CvN5">
-    <mxGraphModel dx="984" dy="649" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
+    <mxGraphModel dx="1194" dy="612" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
@@ -91,7 +91,7 @@
         <mxCell id="pxAkdys24_ruM4_S-u4r-79" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;" parent="1" source="pxAkdys24_ruM4_S-u4r-80" target="pxAkdys24_ruM4_S-u4r-66" edge="1">
           <mxGeometry relative="1" as="geometry" />
         </mxCell>
-        <mxCell id="pxAkdys24_ruM4_S-u4r-80" value="public ip" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Public_IP_Addresses.svg;" parent="1" vertex="1">
+        <mxCell id="pxAkdys24_ruM4_S-u4r-80" value="ip publica" style="image;aspect=fixed;html=1;points=[];align=center;fontSize=12;image=img/lib/azure2/networking/Public_IP_Addresses.svg;" parent="1" vertex="1">
           <mxGeometry x="361" y="438.20000000000005" width="30" height="24" as="geometry" />
         </mxCell>
         <mxCell id="pxAkdys24_ruM4_S-u4r-81" value="" style="endArrow=classic;startArrow=classic;html=1;rounded=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;" parent="1" source="pxAkdys24_ruM4_S-u4r-73" target="pxAkdys24_ruM4_S-u4r-83" edge="1">
