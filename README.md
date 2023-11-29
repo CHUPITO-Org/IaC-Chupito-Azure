@@ -47,6 +47,7 @@ After that the pre-commit will check
 | <a name="module_acg"></a> [acg](#module\_acg) | ./modules/container-instance | n/a |
 | <a name="module_acr"></a> [acr](#module\_acr) | ./modules/container-registry | n/a |
 | <a name="module_network"></a> [network](#module\_network) | ./modules/network | n/a |
+| <a name="module_storage"></a> [storage](#module\_storage) | ./modules/storage | n/a |
 
 ## Resources
 
