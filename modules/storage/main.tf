@@ -1,6 +1,6 @@
 # Storage Account
 resource "azurerm_storage_account" "storage" {
-  name                            = "storagedbcapabili"
+  name                            = "storagedbcapa"
   resource_group_name             = var.resource_group_name
   location                        = var.location
   account_tier                    = "Standard"
@@ -11,7 +11,7 @@ resource "azurerm_storage_account" "storage" {
 
 # File share to container volume
 resource "azurerm_storage_share" "storage_share" {
-  name                 = "fsdb-capabilities-1"
+  name                 = "fsdb-capabilities"
   storage_account_name = azurerm_storage_account.storage.name
   quota                = 50
 }

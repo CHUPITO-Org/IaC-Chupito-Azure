@@ -49,5 +49,8 @@ module "acg" {
   share_name           = module.storage.share_name
   aci_name_database    = var.aci_name_database
   image_db             = "${module.acr.acr_login_server}/image-mongo:v1"
+  db_root_username     = var.db_root_username
+  db_root_password     = var.db_root_password
+  default_db           = var.default_db
   image_back           = "${module.acr.acr_login_server}/ms-conference-bff"
 }

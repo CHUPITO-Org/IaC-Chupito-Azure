@@ -53,7 +53,6 @@ resource "azurerm_container_group" "acg" {
     }
   }
 
-  #TODO: Agregar contenedor de Backend
   container {
     name   = "conference-bff"
     image  = var.image_back
@@ -65,4 +64,5 @@ resource "azurerm_container_group" "acg" {
       protocol = "TCP"
     }
   }
+
 }
