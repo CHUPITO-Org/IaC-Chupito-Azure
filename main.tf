@@ -39,7 +39,7 @@ module "acg" {
   acr_admin_username   = module.acr.acr_admin_username
   acr_admin_password   = module.acr.acr_admin_password
   aci_name_front       = var.aci_name_front
-  image_front          = "${module.acr.acr_login_server}/fe-chupito:prueba"
+  image_front          = "${module.acr.acr_login_server}/ms-conference-ui"
   cpu                  = var.cpu
   memory               = var.memory
   port                 = var.port
@@ -49,7 +49,5 @@ module "acg" {
   share_name           = module.storage.share_name
   aci_name_database    = var.aci_name_database
   image_db             = "${module.acr.acr_login_server}/image-mongo:v1"
-  # TODO: Agregar contenedores de backend
-  # image_back = "${module.acr.acr_login_server}/ms-conference-bff"
-
+  image_back           = "${module.acr.acr_login_server}/ms-conference-bff"
 }
