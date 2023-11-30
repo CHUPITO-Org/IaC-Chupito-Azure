@@ -7,6 +7,7 @@ resource "azurerm_container_group" "acg" {
   resource_group_name = var.resource_group_name
   ip_address_type     = "Public"
   os_type             = "Linux"
+  dns_name_label      = "chupito-db"
 
   image_registry_credential {
     server   = var.acr_login_server
@@ -15,7 +16,7 @@ resource "azurerm_container_group" "acg" {
   }
 
   container {
-    name   = var.aci_name
+    name   = var.aci_name_front
     image  = var.image_front
     cpu    = var.cpu
     memory = var.memory
@@ -25,28 +26,37 @@ resource "azurerm_container_group" "acg" {
       protocol = var.protocol
     }
   }
-  # TODO: Agregar contenedores de mongo y bff
-  # container {
-  #   name   = "mongodb"
-  #   image  = "mongo:6.0.6"
-  #   cpu    = "1"
-  #   memory = "1"
 
-  #   ports {
-  #     port     = 27017
-  #     protocol = "TCP"
-  #   }
+  container {
+    name   = var.aci_name_database
+    image  = var.image_db
+    cpu    = var.cpu
+    memory = var.memory
 
-  #   environment_variables = {
-  #     MONGO_INITDB_ROOT_USERNAME = var.db_root_username
-  #     MONGO_INITDB_ROOT_PASSWORD = var.db_root_password
-  #     MONGO_INITDB_DATABASE      = var.default_db
-  #   }
-  # }
+    ports {
+      port     = 27017
+      protocol = "TCP"
+    }
 
+    environment_variables = {
+      MONGO_INITDB_ROOT_USERNAME = var.db_root_username
+      MONGO_INITDB_ROOT_PASSWORD = var.db_root_password
+      MONGODB_DATABASE           = var.default_db
+    }
+
+    volume {
+      name                 = "conferenceappdata"
+      mount_path           = "/data/db-test"
+      storage_account_name = var.storage_account_name
+      storage_account_key  = var.storage_account_key
+      share_name           = var.share_name
+    }
+  }
+
+  # TODO: Agregar contenedor de Backend
   # container {
   #   name   = "conference-bff"
-  #   image  = "azcapabilitiesacr2.azurecr.io/ms-conference-bff:latest"
+  #   image  = var.image_back
   #   cpu    = "1"
   #   memory = "1"
 
@@ -56,7 +66,7 @@ resource "azurerm_container_group" "acg" {
   #   }
 
   #   environment_variables = {
-  #     MONGODB_URI = "mongodb://${var.db_root_username}:${var.db_root_password}@mongodb:27017/${var.default_db}"
+  #     MONGODB_URI = "mongodb://${var.db_root_username}:${var.db_root_password}@chupito-db.eastus2.azurecontainer.io:27017/${var.default_db}"
   #     DEFAULT_DB  = var.default_db
   #   }
   # }

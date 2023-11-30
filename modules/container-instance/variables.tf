@@ -1,4 +1,4 @@
-# azure container instance
+# azure container group
 
 variable "acg_name" {
   description = "Name of the container group"
@@ -15,6 +15,7 @@ variable "resource_group_name" {
   type        = string
 }
 
+# Azure Container Registry credentials
 variable "acr_login_server" {
   description = "Value of the login server"
   type        = string
@@ -30,7 +31,8 @@ variable "acr_admin_password" {
   type        = string
 }
 
-variable "aci_name" {
+# Azure Container Instance - Front
+variable "aci_name_front" {
   description = "Name of the container instance"
   type        = string
 }
@@ -55,32 +57,59 @@ variable "protocol" {
   type        = string
 }
 
-# Mongo DB variables
 
 variable "image_front" {
   description = "image of the front"
 }
 
-# TODO: Agregar contenedores de mongo y bff
+# TODO: Agregar contenedores de backend
 # variable "image_back" {
 #   description = "image of the backend"
 #   default     = "azcapabilitiesacr.azurecr.io/ms-conference-bff:latest"
 # }
 
-# variable "db_root_username" {
-#   description = "value of the root username"
-#   type        = string
-#   default     = "username"
-# }
 
-# variable "db_root_password" {
-#   description = "value of the root password"
-#   type        = string
-#   default     = "password"
-# }
+# Azure Container Instance - Database
 
-# variable "default_db" {
-#   description = "value of the default db"
-#   type        = string
-#   default     = "mongodb"
-# }
+variable "aci_name_database" {
+  description = "Name of the container instance"
+  type        = string
+}
+
+variable "db_root_username" {
+  description = "value of the root username"
+  type        = string
+  default     = "username"
+}
+
+variable "db_root_password" {
+  description = "value of the root password"
+  type        = string
+  default     = "password"
+}
+
+variable "default_db" {
+  description = "value of the default db"
+  type        = string
+  default     = "mongodb"
+}
+
+variable "storage_account_name" {
+  description = "value of the storage account name"
+  type        = string
+}
+
+variable "storage_account_key" {
+  description = "value of the storage account key"
+  type        = string
+}
+
+variable "share_name" {
+  description = "value of the share name"
+  type        = string
+}
+
+variable "image_db" {
+  description = "value of the db image"
+  type        = string
+}

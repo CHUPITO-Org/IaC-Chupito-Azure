@@ -23,7 +23,7 @@ module "acr" {
   sku                 = var.sku
 }
 
-# storage
+#storage
 module "storage" {
   source              = "./modules/storage"
   resource_group_name = azurerm_resource_group.az-capabilities-rg.name
@@ -31,19 +31,25 @@ module "storage" {
 }
 
 module "acg" {
-  source              = "./modules/container-instance"
-  acg_name            = var.acg_name
-  location            = azurerm_resource_group.az-capabilities-rg.location
-  resource_group_name = azurerm_resource_group.az-capabilities-rg.name
-  acr_login_server    = module.acr.acr_login_server
-  acr_admin_username  = module.acr.acr_admin_username
-  acr_admin_password  = module.acr.acr_admin_password
-  aci_name            = var.aci_name
-  image_front         = "${module.acr.acr_login_server}/fe-chupito:prueba"
-  cpu                 = var.cpu
-  memory              = var.memory
-  port                = var.port
-  protocol            = var.protocol
-  # TODO: Agregar contenedores de mongo y bff
-  #image_back          = "${module.acr.acr_login_server}/be-chupito:prueba"
+  source               = "./modules/container-instance"
+  acg_name             = var.acg_name
+  location             = azurerm_resource_group.az-capabilities-rg.location
+  resource_group_name  = azurerm_resource_group.az-capabilities-rg.name
+  acr_login_server     = module.acr.acr_login_server
+  acr_admin_username   = module.acr.acr_admin_username
+  acr_admin_password   = module.acr.acr_admin_password
+  aci_name_front       = var.aci_name_front
+  image_front          = "${module.acr.acr_login_server}/fe-chupito:prueba"
+  cpu                  = var.cpu
+  memory               = var.memory
+  port                 = var.port
+  protocol             = var.protocol
+  storage_account_name = module.storage.storage_account_name
+  storage_account_key  = module.storage.storage_account_key
+  share_name           = module.storage.share_name
+  aci_name_database    = var.aci_name_database
+  image_db             = "${module.acr.acr_login_server}/image-mongo:v1"
+  # TODO: Agregar contenedores de backend
+  # image_back = "${module.acr.acr_login_server}/ms-conference-bff"
+
 }
