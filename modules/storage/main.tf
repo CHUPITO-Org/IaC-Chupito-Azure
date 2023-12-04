@@ -7,6 +7,9 @@ resource "azurerm_storage_account" "storage" {
   account_replication_type        = "LRS"
   min_tls_version                 = "TLS1_2"
   allow_nested_items_to_be_public = true
+  tags = {
+    environment = "chupito"
+  }
 }
 
 # File share to container volume
@@ -14,6 +17,7 @@ resource "azurerm_storage_share" "storage_share" {
   name                 = "fsdb-capabilities"
   storage_account_name = azurerm_storage_account.storage.name
   quota                = 50
+
 }
 
 output "storage_account_name" {
