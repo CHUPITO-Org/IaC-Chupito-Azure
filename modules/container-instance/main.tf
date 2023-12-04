@@ -53,21 +53,16 @@ resource "azurerm_container_group" "acg" {
     }
   }
 
-  # TODO: Agregar contenedor de Backend
-  # container {
-  #   name   = "conference-bff"
-  #   image  = var.image_back
-  #   cpu    = "1"
-  #   memory = "1"
+  container {
+    name   = "conference-bff"
+    image  = var.image_back
+    cpu    = "1"
+    memory = "1"
 
-  #   ports {
-  #     port     = 5002
-  #     protocol = "TCP"
-  #   }
+    ports {
+      port     = 5002
+      protocol = "TCP"
+    }
+  }
 
-  #   environment_variables = {
-  #     MONGODB_URI = "mongodb://${var.db_root_username}:${var.db_root_password}@chupito-db.eastus2.azurecontainer.io:27017/${var.default_db}"
-  #     DEFAULT_DB  = var.default_db
-  #   }
-  # }
 }

@@ -116,3 +116,17 @@ variable "aci_name_database" {
   default     = "database-image"
 }
 
+variable "db_root_username" {
+  description = "value of the root username"
+  type        = string
+}
+
+variable "db_root_password" {
+  description = "value of the root password"
+  type        = string
+}
+
+variable "default_db" {
+  description = "value of the default db"
+  type        = string
+}

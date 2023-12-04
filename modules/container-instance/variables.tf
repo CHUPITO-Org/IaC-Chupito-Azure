@@ -63,10 +63,9 @@ variable "image_front" {
 }
 
 # TODO: Agregar contenedores de backend
-# variable "image_back" {
-#   description = "image of the backend"
-#   default     = "azcapabilitiesacr.azurecr.io/ms-conference-bff:latest"
-# }
+variable "image_back" {
+  description = "image of the backend"
+}
 
 
 # Azure Container Instance - Database
@@ -79,19 +78,16 @@ variable "aci_name_database" {
 variable "db_root_username" {
   description = "value of the root username"
   type        = string
-  default     = "username"
 }
 
 variable "db_root_password" {
   description = "value of the root password"
   type        = string
-  default     = "password"
 }
 
 variable "default_db" {
   description = "value of the default db"
   type        = string
-  default     = "mongodb"
 }
 
 variable "storage_account_name" {
