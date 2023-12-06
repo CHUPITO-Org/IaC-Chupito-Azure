@@ -11,7 +11,7 @@ module "network" {
   address_space       = var.address_space
   location            = azurerm_resource_group.az-capabilities-rg.location
   resource_group_name = azurerm_resource_group.az-capabilities-rg.name
-  subnet_name         = "az-capabilities-subnet-1"
+  subnet_name         = "az-capabilities-subnet-acg"
   address_prefixes    = ["10.0.0.0/24"]
 }
 
