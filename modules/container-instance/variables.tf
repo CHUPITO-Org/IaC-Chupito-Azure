@@ -62,7 +62,12 @@ variable "image_front" {
   description = "image of the front"
 }
 
-# TODO: Agregar contenedores de backend
+# Azure Container Instance - Backend
+variable "aci_name_backend" {
+  description = "Name of the container instance"
+  type        = string
+}
+
 variable "image_back" {
   description = "image of the backend"
 }
@@ -107,5 +112,10 @@ variable "share_name" {
 
 variable "image_db" {
   description = "value of the db image"
+  type        = string
+}
+
+variable "network_profile_id" {
+  description = "value of network profile id"
   type        = string
 }

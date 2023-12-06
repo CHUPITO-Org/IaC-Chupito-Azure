@@ -60,13 +60,18 @@ After that the pre-commit will check
 | Name | Description | Type | Default | Required |
 |------|-------------|------|---------|:--------:|
 | <a name="input_acg_name"></a> [acg\_name](#input\_acg\_name) | Name of the container group | `string` | `"az-capabilties-acg"` | no |
-| <a name="input_aci_name"></a> [aci\_name](#input\_aci\_name) | Name of the container instance | `string` | n/a | yes |
+| <a name="input_aci_name_backend"></a> [aci\_name\_backend](#input\_aci\_name\_backend) | Name of the container instance | `string` | `"backend-container"` | no |
+| <a name="input_aci_name_database"></a> [aci\_name\_database](#input\_aci\_name\_database) | Name of the container instance | `string` | `"database-container"` | no |
+| <a name="input_aci_name_front"></a> [aci\_name\_front](#input\_aci\_name\_front) | Name of the container instance | `string` | `"frontend-container"` | no |
 | <a name="input_acr_name"></a> [acr\_name](#input\_acr\_name) | Name of the container registry | `string` | `"azcapabilitiesacr"` | no |
 | <a name="input_address_space"></a> [address\_space](#input\_address\_space) | Address space of the virtual network | `list(string)` | <pre>[<br>  "10.0.0.0/16"<br>]</pre> | no |
 | <a name="input_admin_enabled"></a> [admin\_enabled](#input\_admin\_enabled) | Admin enabled | `bool` | `true` | no |
 | <a name="input_client_id"></a> [client\_id](#input\_client\_id) | Terraform Cloud connection | `string` | n/a | yes |
 | <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | n/a | `string` | n/a | yes |
 | <a name="input_cpu"></a> [cpu](#input\_cpu) | value of cpu | `number` | `1` | no |
+| <a name="input_db_root_password"></a> [db\_root\_password](#input\_db\_root\_password) | value of the root password | `string` | n/a | yes |
+| <a name="input_db_root_username"></a> [db\_root\_username](#input\_db\_root\_username) | value of the root username | `string` | n/a | yes |
+| <a name="input_default_db"></a> [default\_db](#input\_default\_db) | value of the default db | `string` | n/a | yes |
 | <a name="input_ip_address_type"></a> [ip\_address\_type](#input\_ip\_address\_type) | Type of ip address: private or public | `string` | `"Public"` | no |
 | <a name="input_location"></a> [location](#input\_location) | Location | `string` | `"Eastus2"` | no |
 | <a name="input_memory"></a> [memory](#input\_memory) | value of memory | `number` | `1` | no |

@@ -83,7 +83,7 @@ variable "os_type" {
 variable "aci_name_front" {
   description = "Name of the container instance"
   type        = string
-  default     = "frontend-image"
+  default     = "frontend-container"
 }
 
 variable "cpu" {
@@ -110,10 +110,17 @@ variable "protocol" {
   default     = "TCP"
 }
 
+variable "aci_name_backend" {
+  description = "Name of the container instance"
+  type        = string
+  default     = "backend-container"
+
+}
+
 variable "aci_name_database" {
   description = "Name of the container instance"
   type        = string
-  default     = "database-image"
+  default     = "database-container"
 }
 
 variable "db_root_username" {
