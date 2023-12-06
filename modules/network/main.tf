@@ -26,7 +26,7 @@ resource "azurerm_subnet" "subnet" {
 
 resource "azurerm_network_profile" "network-profile" {
   name                = "network-profile"
-  location            = "eastus2"
+  location            = var.location
   resource_group_name = var.resource_group_name
 
   container_network_interface {
@@ -41,7 +41,7 @@ resource "azurerm_network_profile" "network-profile" {
 
 resource "azurerm_public_ip" "publicip" {
   name                = "az-capabilities-ippublica"
-  location            = "Eastus2"
+  location            = var.location
   resource_group_name = var.resource_group_name
   allocation_method   = "Static"
   sku                 = "Standard"
