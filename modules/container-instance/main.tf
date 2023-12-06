@@ -5,9 +5,8 @@ resource "azurerm_container_group" "acg" {
   name                = var.acg_name
   location            = var.location
   resource_group_name = var.resource_group_name
-  ip_address_type     = "Public"
+  ip_address_type     = "Private"
   os_type             = "Linux"
-  dns_name_label      = "chupito-db"
 
   image_registry_credential {
     server   = var.acr_login_server
@@ -35,7 +34,7 @@ resource "azurerm_container_group" "acg" {
 
     ports {
       port     = 27017
-      protocol = "TCP"
+      protocol = var.protocol
     }
 
     environment_variables = {
@@ -54,15 +53,19 @@ resource "azurerm_container_group" "acg" {
   }
 
   container {
-    name   = "conference-bff"
+    name   = var.aci_name_backend
     image  = var.image_back
-    cpu    = "1"
-    memory = "1"
+    cpu    = var.cpu
+    memory = var.memory
 
     ports {
       port     = 5002
-      protocol = "TCP"
+      protocol = var.protocol
     }
   }
+  network_profile_id = var.network_profile_id
+}
 
+output "ip_address" {
+  value = azurerm_container_group.acg.ip_address
 }

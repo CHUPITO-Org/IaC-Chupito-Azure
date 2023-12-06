@@ -11,6 +11,8 @@ module "network" {
   address_space       = var.address_space
   location            = azurerm_resource_group.az-capabilities-rg.location
   resource_group_name = azurerm_resource_group.az-capabilities-rg.name
+  subnet_name         = "az-capabilities-subnet-1"
+  address_prefixes    = ["10.0.0.0/24"]
 }
 
 # azure container registry
@@ -52,5 +54,7 @@ module "acg" {
   db_root_username     = var.db_root_username
   db_root_password     = var.db_root_password
   default_db           = var.default_db
+  aci_name_backend     = var.aci_name_backend
   image_back           = "${module.acr.acr_login_server}/ms-conference-bff"
+  network_profile_id   = module.network.network_profile_id
 }
