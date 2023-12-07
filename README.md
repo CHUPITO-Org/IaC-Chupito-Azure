@@ -46,6 +46,7 @@ After that the pre-commit will check
 |------|--------|---------|
 | <a name="module_acg"></a> [acg](#module\_acg) | ./modules/container-instance | n/a |
 | <a name="module_acr"></a> [acr](#module\_acr) | ./modules/container-registry | n/a |
+| <a name="module_load_balancer"></a> [load\_balancer](#module\_load\_balancer) | ./modules/load-balancer | n/a |
 | <a name="module_network"></a> [network](#module\_network) | ./modules/network | n/a |
 | <a name="module_storage"></a> [storage](#module\_storage) | ./modules/storage | n/a |
 
@@ -79,10 +80,10 @@ After that the pre-commit will check
 | <a name="input_port"></a> [port](#input\_port) | value of port | `number` | `80` | no |
 | <a name="input_protocol"></a> [protocol](#input\_protocol) | value of protocol | `string` | `"TCP"` | no |
 | <a name="input_rg_name"></a> [rg\_name](#input\_rg\_name) | Name of the resource group | `string` | `"az-capabilities-rg"` | no |
-| <a name="input_sku"></a> [sku](#input\_sku) | Level o sku | `string` | `"Standard"` | no |
+| <a name="input_sku"></a> [sku](#input\_sku) | Level o sku | `string` | `"Basic"` | no |
 | <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | n/a | `string` | n/a | yes |
 | <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | n/a | `string` | n/a | yes |
-| <a name="input_vnet_name"></a> [vnet\_name](#input\_vnet\_name) | Name of the virtual network | `string` | `"az-capabilities-vnet-1"` | no |
+| <a name="input_vnet_name"></a> [vnet\_name](#input\_vnet\_name) | Name of the virtual network | `string` | `"az-capabilities-vnet"` | no |
 
 ## Outputs
 

@@ -32,7 +32,7 @@ variable "location" {
 variable "vnet_name" {
   description = "Name of the virtual network"
   type        = string
-  default     = "az-capabilities-vnet-1"
+  default     = "az-capabilities-vnet"
 }
 
 variable "address_space" {
@@ -57,7 +57,7 @@ variable "admin_enabled" {
 variable "sku" {
   description = "Level o sku"
   type        = string
-  default     = "Standard"
+  default     = "Basic"
 }
 
 # azure container instance
