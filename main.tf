@@ -58,3 +58,13 @@ module "acg" {
   image_back           = "${module.acr.acr_login_server}/ms-conference-bff"
   network_profile_id   = module.network.network_profile_id
 }
+
+# load balancer
+module "load_balancer" {
+  source                = "./modules/load-balancer"
+  resource_group_name   = azurerm_resource_group.az-capabilities-rg.name
+  location              = var.location
+  vnet_id               = module.network.vnet_id
+  ip_address_backend_lb = module.acg.ip_address
+  public_ip_address_id  = module.network.public_ip_id
+}
