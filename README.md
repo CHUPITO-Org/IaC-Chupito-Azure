@@ -15,7 +15,7 @@ In order to deploy the application, the following architecture have been designe
 
 ![Azure architecture](./docs/ADR/v2.0/azure_architecture_2.png)
 
-For more details, please review this section: [Here](./docs/ADR.md)
+For more details, please review this section: [ADR](./docs/ADR.md) | [Resources](./docs/README-tech.md)
 
 ## Dependencies
 Install Terraform for MacOS:
@@ -28,7 +28,7 @@ terraform -v
 If you are using the Azure project's account, ignore the first step and request the credentials:
 1. If you are using a personal Azure account:
   - Create an Application Registration, give Contributor role and save the credentials. 
-2. Copy the `.dev.auto.example.tfvars` file and rename it as `.dev.auto.tfvars`. Then, configure the terraform variables according to your specific app registration:
+2. Copy the `terraform.tfvars.example` file and rename it as `.dev.auto.tfvars`. Then, configure the terraform variables according to your specific app registration:
 
 | Key                       | Description                                               |
 | :-------------------------| :-------------------------------------------------------- |
@@ -68,39 +68,20 @@ terraform apply -target=azurerm_resource_group.az-capabilities-rg -target=module
   - Upload the images:
     - [Frontend](https://github.com/CHUPITO-Org/FE-Chupito): 
       ```bash
-      docker tag [frontend-image] azcapabilitiesacr.azurecr.io/ms-conference-ui
-      docker push azcapabilitiesacr.azurecr.io/ms-conference-ui
+      docker tag [frontend-image] [container-registry-server]/ms-conference-ui
+      docker push [container-registry-server]/ms-conference-ui
       ```
     - [Backend](https://github.com/CHUPITO-Org/BE-Chupito/): 
       ```bash
-      docker tag [backend-image] azcapabilitiesacr.azurecr.io/ms-conference-bff
-      docker push azcapabilitiesacr.azurecr.io/ms-conference-bff
+      docker tag [backend-image] [container-registry-server]/ms-conference-bff
+      docker push [container-registry-server]/ms-conference-bff
       ```
-    - [Database](./database-image/Dockerfile): 
-    Locate in [./database-image](./database-image/Dockerfile) folder and execute:
+    - Database:
       ```bash
-      docker buildx build --platform linux/amd64 -t image-mongo:v1 . -f Dockerfile
-      docker tag image-mongo:v1 azcapabilitiesacr.azurecr.io/image-mongo:v1
-      docker push azcapabilitiesacr.azurecr.io/image-mongo:v1
+      docker tag [bd-image] [container-registry-server]/image-mongo:v1
+      docker push [container-registry-server]/image-mongo:v1
       ```
   - Deploy all the resources 
   ```bash
   terraform apply --var-file=dev.auto.tfvars
   ```
-## Test the deployment
-
-Navigate in your browser:http://az-capabilities-dns.eastus2.cloudapp.azure.com/
-
-To test connection between containers:
-```bash
-    clientId=$(grep 'client_id' dev.auto.tfvars | cut -d '=' -f2 | tr -d ' "')                   
-    clientSecret=$(grep 'client_secret' dev.auto.tfvars | cut -d '=' -f2 | tr -d ' "')
-    tenantId=$(grep 'tenant_id' dev.auto.tfvars | cut -d '=' -f2 | tr -d ' "')
-```
-```bash
-    az login --service-principal --username $clientId --password $clientSecret --tenant $tenantId
-```
-```bash
-    az container exec --resource-group az-capabilities-rg --name az-capabilties-acg --container-name frontend-container --exec-command "/bin/sh"
-    curl -v 10.0.0.4:5002/v1/headquarters
-```
