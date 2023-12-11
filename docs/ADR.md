@@ -1,8 +1,18 @@
-# Azure Architecture
+# Event Manager - Azure Architecture
 
-## Infrastructure
+## Architecture Decisions Record (ADR)
+
+### Infrastructure
+
+#### Version 1
 
 ![Azure architecture](./ADR/v1.0/azure_architecture.png)
+
+#### Version 2
+
+![Azure architecture](./ADR/v2.0/azure_architecture_2.png)
+
+### Resources
 
 * Subscription
   * App registration
@@ -15,7 +25,7 @@
     * Public Ip
     * Storage Account
 
-## Infrastructure Cost
+### Infrastructure Cost
 
 Costo por mes durante 24 horas:
 

@@ -1,91 +1,106 @@
-# tf-module-template
+## Event Manager - Azure Infrastructure
 
-Template for creating terraform module repo.
+This repository is a custom deployment of event manager application based on Azure.
 
-## Needs
+## Contents
+- [Event Manager](#event-manager---azure-infrastructure)
+- [Contents](#contents)
+- [Application Architecture](#application-architecture)
+- [Dependencies](#dependencies)
+- [Project Requirements](#project-requirements)
+- [Usage](#usage)
 
-- Download all the linter dependencies
-- Change the URL parameter in .github/workflows/cliff.toml with the repository URL so the commits can be shown on the CHANGELOG.md file
+## Application architecture
+In order to deploy the application, the following architecture have been designed. 
 
-#### Pre-commit hook
+![Azure architecture](./docs/ADR/v2.0/azure_architecture_2.png)
 
-The template utilizes pre-commit hooks to run the linters before committing the code, if you are using starting the template for the first time, you need to enable the pre-commit, after that it will work for all subsecuents commits. To use the To install the pre-commit hooks run the following command:
+For more details, please review this section: [Here](./docs/ADR.md)
 
+## Dependencies
+Install Terraform for MacOS:
 ```bash
-pre-commit install
+brew install terraform
+terraform -v
 ```
 
-#### Hook Process
+## Project Requirements
+If you are using the Azure project's account, ignore the first step and request the credentials:
+1. If you are using a personal Azure account:
+  - Create an Application Registration, give Contributor role and save the credentials. 
+2. Copy the `.dev.auto.example.tfvars` file and rename it as `.dev.auto.tfvars`. Then, configure the terraform variables according to your specific app registration:
 
-After that the pre-commit will check
+| Key                       | Description                                               |
+| :-------------------------| :-------------------------------------------------------- |
+| **client_id**             | App registration credential: Client ID                    |
+| **client_secret**         | App registration credential: Client Secret                |
+| **subscription_id**       | App registration credential: Subscription ID              |
+| **tenant_id**             | App registration credential: Tenant ID                    |
 
-- Terraform fmt
-- Terraform tflint
-- Terraform tfsec
-- Terraform validate
-- Terraform docs (if the tf-docs isn't updated the is going to overrite the README.md file)
-- It will check for [conventional commits](https://www.conventionalcommits.org/en/v1.0.0/)
+## Usage
 
-<!-- BEGIN_TF_DOCS -->
-## Requirements
+1. Initialize terraform
+```bash
+terraform init
+```
+2. Check the execution plan: 
+```bash
+terraform plan
+```
+3. Apply the plan as follows:
+- Deploy Resource Group and Azure Container Registry
+```bash
+terraform apply -target=azurerm_resource_group.az-capabilities-rg -target=module.acr --var-file=dev.auto.tfvars
+```
+- Upload the frontend, backend and database image to Azure Container Registry
+  - Get the app registration credentials
+    ```bash
+    clientId=$(grep 'client_id' dev.auto.tfvars | cut -d '=' -f2 | tr -d ' "')                   
+    clientSecret=$(grep 'client_secret' dev.auto.tfvars | cut -d '=' -f2 | tr -d ' "')
+    tenantId=$(grep 'tenant_id' dev.auto.tfvars | cut -d '=' -f2 | tr -d ' "')
+    ```
+  -  Connect to Azure and connect the Azure Container Registry variables
+    ```bash
+      az login --service-principal --username $clientId --password $clientSecret --tenant $tenantId
+      ACR_LOGIN_SERVER=$(az acr show --name azcapabilitiesacr --query loginServer --output tsv)
+      az acr login --name $ACR_LOGIN_SERVER
+    ```
+  - Upload the images:
+    - [Frontend](https://github.com/CHUPITO-Org/FE-Chupito): 
+      ```bash
+      docker tag [frontend-image] azcapabilitiesacr.azurecr.io/ms-conference-ui
+      docker push azcapabilitiesacr.azurecr.io/ms-conference-ui
+      ```
+    - [Backend](https://github.com/CHUPITO-Org/BE-Chupito/): 
+      ```bash
+      docker tag [backend-image] azcapabilitiesacr.azurecr.io/ms-conference-bff
+      docker push azcapabilitiesacr.azurecr.io/ms-conference-bff
+      ```
+    - [Database](./database-image/Dockerfile): 
+    Locate in [./database-image](./database-image/Dockerfile) folder and execute:
+      ```bash
+      docker buildx build --platform linux/amd64 -t image-mongo:v1 . -f Dockerfile
+      docker tag image-mongo:v1 azcapabilitiesacr.azurecr.io/image-mongo:v1
+      docker push azcapabilitiesacr.azurecr.io/image-mongo:v1
+      ```
+  - Deploy all the resources 
+  ```bash
+  terraform apply --var-file=dev.auto.tfvars
+  ```
+## Test the deployment
 
-| Name | Version |
-|------|---------|
-| <a name="requirement_terraform"></a> [terraform](#requirement\_terraform) | >= 1.6.0 |
-| <a name="requirement_azurerm"></a> [azurerm](#requirement\_azurerm) | 3.0.1 |
+Navigate in your browser:http://az-capabilities-dns.eastus2.cloudapp.azure.com/
 
-## Providers
-
-| Name | Version |
-|------|---------|
-| <a name="provider_azurerm"></a> [azurerm](#provider\_azurerm) | 3.0.1 |
-
-## Modules
-
-| Name | Source | Version |
-|------|--------|---------|
-| <a name="module_acg"></a> [acg](#module\_acg) | ./modules/container-instance | n/a |
-| <a name="module_acr"></a> [acr](#module\_acr) | ./modules/container-registry | n/a |
-| <a name="module_load_balancer"></a> [load\_balancer](#module\_load\_balancer) | ./modules/load-balancer | n/a |
-| <a name="module_network"></a> [network](#module\_network) | ./modules/network | n/a |
-| <a name="module_storage"></a> [storage](#module\_storage) | ./modules/storage | n/a |
-
-## Resources
-
-| Name | Type |
-|------|------|
-| [azurerm_resource_group.az-capabilities-rg](https://registry.terraform.io/providers/hashicorp/azurerm/3.0.1/docs/resources/resource_group) | resource |
-
-## Inputs
-
-| Name | Description | Type | Default | Required |
-|------|-------------|------|---------|:--------:|
-| <a name="input_acg_name"></a> [acg\_name](#input\_acg\_name) | Name of the container group | `string` | `"az-capabilties-acg"` | no |
-| <a name="input_aci_name_backend"></a> [aci\_name\_backend](#input\_aci\_name\_backend) | Name of the container instance | `string` | `"backend-container"` | no |
-| <a name="input_aci_name_database"></a> [aci\_name\_database](#input\_aci\_name\_database) | Name of the container instance | `string` | `"database-container"` | no |
-| <a name="input_aci_name_front"></a> [aci\_name\_front](#input\_aci\_name\_front) | Name of the container instance | `string` | `"frontend-container"` | no |
-| <a name="input_acr_name"></a> [acr\_name](#input\_acr\_name) | Name of the container registry | `string` | `"azcapabilitiesacr"` | no |
-| <a name="input_address_space"></a> [address\_space](#input\_address\_space) | Address space of the virtual network | `list(string)` | <pre>[<br>  "10.0.0.0/16"<br>]</pre> | no |
-| <a name="input_admin_enabled"></a> [admin\_enabled](#input\_admin\_enabled) | Admin enabled | `bool` | `true` | no |
-| <a name="input_client_id"></a> [client\_id](#input\_client\_id) | Terraform Cloud connection | `string` | n/a | yes |
-| <a name="input_client_secret"></a> [client\_secret](#input\_client\_secret) | n/a | `string` | n/a | yes |
-| <a name="input_cpu"></a> [cpu](#input\_cpu) | value of cpu | `number` | `1` | no |
-| <a name="input_db_root_password"></a> [db\_root\_password](#input\_db\_root\_password) | value of the root password | `string` | n/a | yes |
-| <a name="input_db_root_username"></a> [db\_root\_username](#input\_db\_root\_username) | value of the root username | `string` | n/a | yes |
-| <a name="input_default_db"></a> [default\_db](#input\_default\_db) | value of the default db | `string` | n/a | yes |
-| <a name="input_ip_address_type"></a> [ip\_address\_type](#input\_ip\_address\_type) | Type of ip address: private or public | `string` | `"Public"` | no |
-| <a name="input_location"></a> [location](#input\_location) | Location | `string` | `"Eastus2"` | no |
-| <a name="input_memory"></a> [memory](#input\_memory) | value of memory | `number` | `1` | no |
-| <a name="input_os_type"></a> [os\_type](#input\_os\_type) | Type of os\_type | `string` | `"Linux"` | no |
-| <a name="input_port"></a> [port](#input\_port) | value of port | `number` | `80` | no |
-| <a name="input_protocol"></a> [protocol](#input\_protocol) | value of protocol | `string` | `"TCP"` | no |
-| <a name="input_rg_name"></a> [rg\_name](#input\_rg\_name) | Name of the resource group | `string` | `"az-capabilities-rg"` | no |
-| <a name="input_sku"></a> [sku](#input\_sku) | Level o sku | `string` | `"Basic"` | no |
-| <a name="input_subscription_id"></a> [subscription\_id](#input\_subscription\_id) | n/a | `string` | n/a | yes |
-| <a name="input_tenant_id"></a> [tenant\_id](#input\_tenant\_id) | n/a | `string` | n/a | yes |
-| <a name="input_vnet_name"></a> [vnet\_name](#input\_vnet\_name) | Name of the virtual network | `string` | `"az-capabilities-vnet"` | no |
-
-## Outputs
-
-No outputs.
-<!-- END_TF_DOCS -->
+To test connection between containers:
+```bash
+    clientId=$(grep 'client_id' dev.auto.tfvars | cut -d '=' -f2 | tr -d ' "')                   
+    clientSecret=$(grep 'client_secret' dev.auto.tfvars | cut -d '=' -f2 | tr -d ' "')
+    tenantId=$(grep 'tenant_id' dev.auto.tfvars | cut -d '=' -f2 | tr -d ' "')
+```
+```bash
+    az login --service-principal --username $clientId --password $clientSecret --tenant $tenantId
+```
+```bash
+    az container exec --resource-group az-capabilities-rg --name az-capabilties-acg --container-name frontend-container --exec-command "/bin/sh"
+    curl -v 10.0.0.4:5002/v1/headquarters
+```
