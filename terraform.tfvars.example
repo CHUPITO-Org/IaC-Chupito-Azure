@@ -1,0 +1,7 @@
+client_id        = "Change this value"
+client_secret    = "Change this value"
+subscription_id  = "Change this value"
+tenant_id        = "Change this value"
+db_root_username = "mongoDev"
+db_root_password = "Passw0rd"
+default_db       = "mongodb"
