@@ -19,12 +19,16 @@ In order to deploy the application, the following architecture have been designe
 For more details, please review this section: [ADR](./docs/ADR.md) | [Resources](./docs/README-tech.md)
 
 ## Dependencies
-Install Terraform for MacOS:
-```bash
-brew install terraform
-terraform -v
-```
-
+- Install Terraform for MacOS:
+  ```bash
+  brew install terraform
+  terraform -v
+  ```
+- Install the pre-commit hooks:
+  ```bash
+  pre-commit install
+  ```
+  
 ## Project Requirements
 If you are using the Azure project's account, ignore the first step and request the credentials:
 1. If you are using a personal Azure account:
@@ -40,11 +44,18 @@ If you are using the Azure project's account, ignore the first step and request 
 
 ## Usage
 
-1. Deploy the resources:
-  - Resource group
-  - Container registry
+### Local deployment
+
+1. Deploy the resources: Resource group, Container registry
 2. Upload images: Frontend, Backend and Database to your container registry
 3. Deploy all the resources
+
+### Remote deployment
+1. Request access to Terraform Cloud Workspace
+2. If necessary, update the Environment Variables
+3. Every time you push to your Git repository, Terraform Cloud will automatically execute a Terraform plan
+
+For more details, see the official Terraform Cloud documentation.
 
 ## Testing
 
