@@ -44,12 +44,6 @@ If you are using the Azure project's account, ignore the first step and request 
 
 ## Usage
 
-### Local deployment
-
-1. Deploy the resources: Resource group, Container registry
-2. Upload images: Frontend, Backend and Database to your container registry
-3. Deploy all the resources
-
 ### Remote deployment
 1. Request access to Terraform Cloud Workspace
 2. If necessary, update the Environment Variables

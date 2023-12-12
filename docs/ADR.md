@@ -27,7 +27,7 @@
 
 ### Infrastructure Cost
 
-Costo por mes durante 24 horas:
+Cost per month for 24 hours:
 
 * Virtual Network: 7 USD
 * Container Registry: 5 USD
