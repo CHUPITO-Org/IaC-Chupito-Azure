@@ -9,6 +9,7 @@ This repository is a custom deployment of event manager application based on Azu
 - [Dependencies](#dependencies)
 - [Project Requirements](#project-requirements)
 - [Usage](#usage)
+- [Testing](#testing)
 
 ## Application architecture
 In order to deploy the application, the following architecture have been designed. 
@@ -39,49 +40,12 @@ If you are using the Azure project's account, ignore the first step and request 
 
 ## Usage
 
-1. Initialize terraform
-```bash
-terraform init
-```
-2. Check the execution plan: 
-```bash
-terraform plan
-```
-3. Apply the plan as follows:
-- Deploy Resource Group and Azure Container Registry
-```bash
-terraform apply -target=azurerm_resource_group.az-capabilities-rg -target=module.acr --var-file=dev.auto.tfvars
-```
-- Upload the frontend, backend and database image to Azure Container Registry
-  - Get the app registration credentials
-    ```bash
-    clientId=$(grep 'client_id' dev.auto.tfvars | cut -d '=' -f2 | tr -d ' "')                   
-    clientSecret=$(grep 'client_secret' dev.auto.tfvars | cut -d '=' -f2 | tr -d ' "')
-    tenantId=$(grep 'tenant_id' dev.auto.tfvars | cut -d '=' -f2 | tr -d ' "')
-    ```
-  -  Connect to Azure and connect the Azure Container Registry variables
-    ```bash
-      az login --service-principal --username $clientId --password $clientSecret --tenant $tenantId
-      ACR_LOGIN_SERVER=$(az acr show --name azcapabilitiesacr --query loginServer --output tsv)
-      az acr login --name $ACR_LOGIN_SERVER
-    ```
-  - Upload the images:
-    - [Frontend](https://github.com/CHUPITO-Org/FE-Chupito): 
-      ```bash
-      docker tag [frontend-image] [container-registry-server]/ms-conference-ui
-      docker push [container-registry-server]/ms-conference-ui
-      ```
-    - [Backend](https://github.com/CHUPITO-Org/BE-Chupito/): 
-      ```bash
-      docker tag [backend-image] [container-registry-server]/ms-conference-bff
-      docker push [container-registry-server]/ms-conference-bff
-      ```
-    - Database:
-      ```bash
-      docker tag [bd-image] [container-registry-server]/image-mongo:v1
-      docker push [container-registry-server]/image-mongo:v1
-      ```
-  - Deploy all the resources 
-  ```bash
-  terraform apply --var-file=dev.auto.tfvars
-  ```
+1. Deploy the resources:
+  - Resource group
+  - Container registry
+2. Upload images: Frontend, Backend and Database to your container registry
+3. Deploy all the resources
+
+## Testing
+
+For testing: [Here](./testing.md)
