@@ -68,3 +68,11 @@ module "load_balancer" {
   ip_address_backend_lb = module.acg.ip_address
   public_ip_address_id  = module.network.public_ip_id
 }
+
+#monitoring
+module "monitoring" {
+  source              = "./modules/monitoring"
+  resource_group_name = azurerm_resource_group.az-capabilities-rg.name
+  location            = var.location
+  lb_id               = module.load_balancer.lb_id
+}
