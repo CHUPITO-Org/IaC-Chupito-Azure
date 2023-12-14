@@ -14,7 +14,7 @@ This repository is a custom deployment of event manager application based on Azu
 ## Application architecture
 In order to deploy the application, the following architecture have been designed. 
 
-![Azure architecture](./docs/ADR/v2.0/azure_architecture_2.png)
+![Azure architecture](./docs/ADR/v3.0/azure_architecture_3.drawio.png)
 
 For more details, please review this section: [ADR](./docs/ADR.md) | [Resources](./docs/README-tech.md)
 
