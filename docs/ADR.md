@@ -10,6 +10,10 @@
 
 #### Version 2
 
+![Azure architecture](./ADR/v3.0/azure_architecture_2.png)
+
+#### Version 3
+
 ![Azure architecture](./ADR/v3.0/azure_architecture_3.drawio.png)
 
 ### Resources
