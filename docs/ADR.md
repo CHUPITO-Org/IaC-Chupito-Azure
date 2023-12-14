@@ -10,7 +10,7 @@
 
 #### Version 2
 
-![Azure architecture](./ADR/v2.0/azure_architecture_2.png)
+![Azure architecture](./ADR/v3.0/azure_architecture_3.drawio.png)
 
 ### Resources
 
@@ -23,7 +23,10 @@
     * Container group: 3 Container Instances
     * Load Balancer
     * Public Ip
-    * Storage Account
+    * Storage Account for Container
+    * Azure Monitor
+    * Azure Log Workspace
+    * Storage Account for Logging
 
 ### Infrastructure Cost
 
@@ -38,4 +41,4 @@ Cost per month for 24 hours:
 
 **Total cost: 77.52 USD**
 
-**Azure Calculator:** https://azure.com/e/c7787cbc39e44ecaaed1c37f1f43c34a
+**Azure Calculator:** https://azure.com/e/b81a8c974e1c4eee8516fd5a970ffabc
