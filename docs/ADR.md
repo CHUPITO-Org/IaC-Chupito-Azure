@@ -37,8 +37,10 @@ Cost per month for 24 hours:
 * Container group: 32.81 USD
 * Load Balancer: 23.25 USD
 * Public Ip: 3.65 USD
-* Storage Account: 5.81 USD
+* Azure Monitor: 16.84 USD
+* Storage Account for Container: 5.81 USD
+* Storage Account for Logging: 5.81 USD
 
-**Total cost: 77.52 USD**
+**Total cost: 100.16 USD**
 
 **Azure Calculator:** https://azure.com/e/b81a8c974e1c4eee8516fd5a970ffabc
